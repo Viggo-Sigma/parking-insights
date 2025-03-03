@@ -80,22 +80,22 @@ const PublicInterface = () => {
   return (
     <div className="space-y-8">
       <div 
-        className={`bg-gradient-to-r from-white to-green-50 rounded-xl shadow-lg p-8 border border-green-100 transform transition-all duration-700 ${
+        className={`bg-white rounded-xl shadow-lg p-8 border border-gray-300 transform transition-all duration-700 ${
           isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}
       >
         <div className="flex items-start">
           <div className="flex-1">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent mb-3">
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
               Find Parking in Malmö
             </h1>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-700 text-lg">
               Locate available parking spaces near you and get real-time availability information.
             </p>
           </div>
           <div className="hidden md:block">
             <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -106,21 +106,21 @@ const PublicInterface = () => {
       
       {/* Location Error Message */}
       {locationError && (
-        <div className={`bg-red-50 border-l-4 border-red-500 p-6 rounded-lg shadow-md transform transition-all duration-500 ${
+        <div className={`bg-red-100 border-l-4 border-red-700 p-6 rounded-lg shadow-md transform transition-all duration-500 ${
           isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}>
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+              <svg className="h-6 w-6 text-red-700" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-md text-red-700">{locationError}</p>
+              <p className="text-md text-gray-800">{locationError}</p>
               <div className="mt-3">
                 <button
                   onClick={retryLocation}
-                  className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white text-sm font-medium rounded-lg hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow-md transition-all duration-300 transform hover:scale-105"
+                  className="px-4 py-2 bg-red-700 text-white text-sm font-medium rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 shadow-md transition-all duration-300"
                 >
                   Retry
                 </button>
@@ -136,8 +136,8 @@ const PublicInterface = () => {
           isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}>
           <div className="flex flex-col items-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-green-600"></div>
-            <p className="mt-6 text-gray-600 text-lg">Getting your location...</p>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-green-700"></div>
+            <p className="mt-6 text-gray-700 text-lg">Getting your location...</p>
           </div>
         </div>
       )}
@@ -157,14 +157,14 @@ const PublicInterface = () => {
         />
       </div>
       
-      <div className={`bg-gradient-to-r from-white to-green-50 rounded-xl shadow-lg p-8 border border-green-100 transform transition-all duration-700 delay-300 ${
+      <div className={`bg-white rounded-xl shadow-lg p-8 border border-gray-300 transform transition-all duration-700 delay-300 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent mb-4">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">
           How to Use
         </h2>
-        <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-inner">
-          <ol className="space-y-4 text-gray-700">
+        <div className="bg-gray-100 rounded-lg p-6 shadow-inner border border-gray-200">
+          <ol className="space-y-4 text-gray-800">
             {[
               "Allow location access when prompted to find parking near you",
               "Browse the list of nearby streets with available parking",
@@ -186,14 +186,14 @@ const PublicInterface = () => {
               { color: 'amber', label: 'Limited availability' },
               { color: 'red', label: 'No availability' }
             ].map((status, index) => (
-              <div key={index} className="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100 transition-transform duration-300 hover:scale-105">
-                <div className={`w-4 h-4 rounded-full bg-${status.color}-500 mr-2`}></div>
-                <span className={`text-${status.color}-600 font-medium`}>{status.label}</span>
+              <div key={index} className="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-200 transition-transform duration-300 hover:scale-105">
+                <div className={`w-4 h-4 rounded-full bg-${status.color}-700 mr-2`}></div>
+                <span className={`text-${status.color}-700 font-medium`}>{status.label}</span>
               </div>
             ))}
           </div>
         </div>
-        <p className="mt-6 text-sm text-gray-500 italic bg-white/50 p-4 rounded-lg">
+        <p className="mt-6 text-sm text-gray-700 italic bg-gray-100 p-4 rounded-lg border border-gray-200">
           Note: This is a demonstration application. In a real-world scenario, the data would be updated in real-time from parking sensors.
         </p>
       </div>

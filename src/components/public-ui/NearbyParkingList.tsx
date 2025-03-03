@@ -32,19 +32,19 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
     }
   }, [userLocation]);
   
-  // Get color class based on availability status
+  // Get color class based on availability status with improved contrast
   const getStatusColorClass = (carsParked: number, totalSpaces: number): string => {
     const status = getAvailabilityStatus(carsParked, totalSpaces);
     
     switch (status) {
       case 'high':
-        return 'bg-green-100 border-green-500 text-green-800';
+        return 'bg-green-100 border-green-600 text-green-900';
       case 'limited':
-        return 'bg-amber-100 border-amber-500 text-amber-800';
+        return 'bg-amber-100 border-amber-600 text-amber-900';
       case 'none':
-        return 'bg-red-100 border-red-500 text-red-800';
+        return 'bg-red-100 border-red-600 text-red-900';
       default:
-        return 'bg-blue-100 border-blue-500 text-blue-800';
+        return 'bg-blue-100 border-blue-600 text-blue-900';
     }
   };
   
@@ -86,18 +86,18 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
   };
   
   return (
-    <div className="bg-gradient-to-r from-white to-green-50 rounded-xl shadow-lg p-6 border border-green-100">
-      <h2 className="text-2xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent mb-6">Nearby Parking Spaces</h2>
+    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-300">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Nearby Parking Spaces</h2>
       
       {!userLocation ? (
         <div className="text-center py-8">
           <div className="animate-pulse mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
-          <p className="text-gray-600">Please enable location services to find nearby parking</p>
+          <p className="text-gray-700">Please enable location services to find nearby parking</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -117,27 +117,27 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
             return (
               <div 
                 key={parking.street}
-                className={`border-l-4 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md hover:scale-102 ${statusColorClass}`}
+                className={`border-l-4 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md ${statusColorClass}`}
                 onClick={() => onStreetSelect(parking.street)}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="font-bold text-lg">{parking.street}</h3>
-                    <p className="text-sm mt-1">
+                    <h3 className="font-bold text-lg text-gray-900">{parking.street}</h3>
+                    <p className="text-sm mt-1 text-gray-800">
                       {availableSpaces} spaces available ({Math.round((availableSpaces / parking.total_spaces) * 100)}% free)
                     </p>
                     <div className="flex items-center mt-2">
-                      <span className={`inline-block w-2 h-2 rounded-full mr-2 ${
-                        statusText.includes('High') ? 'bg-green-500' : 
-                        statusText.includes('Limited') ? 'bg-amber-500' : 'bg-red-500'
+                      <span className={`inline-block w-3 h-3 rounded-full mr-2 ${
+                        statusText.includes('High') ? 'bg-green-700' : 
+                        statusText.includes('Limited') ? 'bg-amber-700' : 'bg-red-700'
                       }`}></span>
-                      <p className="text-xs font-medium">{statusText}</p>
+                      <p className="text-sm font-medium">{statusText}</p>
                     </div>
-                    <p className="text-xs mt-2 font-medium text-gray-700">{rateClassInfo}</p>
+                    <p className="text-sm mt-2 font-medium text-gray-800">{rateClassInfo}</p>
                   </div>
                   <div className="text-right">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-800">
                       {formatDistance(distance)}
                     </span>
                   </div>

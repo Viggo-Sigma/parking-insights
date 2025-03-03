@@ -23,31 +23,31 @@ function App() {
   return (
     <MainLayout>
       <div className="mb-8 flex justify-center">
-        <div className="inline-flex rounded-xl shadow-lg p-1 bg-white/80 backdrop-blur-sm">
+        <div className="inline-flex rounded-xl shadow-lg p-1 bg-white border border-gray-300">
           <button
             onClick={() => handleViewChange('company')}
             className={`relative px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
               activeView === 'company'
-                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md'
-                : 'bg-transparent text-gray-700 hover:bg-gray-100'
+                ? 'bg-blue-700 text-white shadow-md'
+                : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
             }`}
           >
             <span className="relative z-10">Company Dashboard</span>
             {activeView === 'company' && (
-              <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 animate-pulse opacity-70"></span>
+              <span className="absolute inset-0 rounded-lg bg-blue-700 animate-pulse opacity-70"></span>
             )}
           </button>
           <button
             onClick={() => handleViewChange('public')}
             className={`relative px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
               activeView === 'public'
-                ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md'
-                : 'bg-transparent text-gray-700 hover:bg-gray-100'
+                ? 'bg-blue-700 text-white shadow-md'
+                : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
             }`}
           >
             <span className="relative z-10">Find Parking</span>
             {activeView === 'public' && (
-              <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 animate-pulse opacity-70"></span>
+              <span className="absolute inset-0 rounded-lg bg-blue-700 animate-pulse opacity-70"></span>
             )}
           </button>
         </div>
