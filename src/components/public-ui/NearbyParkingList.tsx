@@ -72,14 +72,27 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
     return `${distance.toFixed(1)} km`;
   };
   
+  // Get rate class information based on street name
+  const getRateClassInfo = (streetName: string): string => {
+    // Streets with Rate B
+    const rateBStreets = ['Regementsgatan', 'Södra Förstadsgatan', 'Friisgatan'];
+    
+    if (rateBStreets.includes(streetName)) {
+      return 'Rate/Taxa: B (25 SEK/h)';
+    }
+    
+    // All other streets have Rate A
+    return 'Rate/Taxa: A (30 SEK/h)';
+  };
+  
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Nearby Parking Spaces</h2>
+    <div className="bg-gradient-to-r from-white to-green-50 rounded-xl shadow-lg p-6 border border-green-100">
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent mb-6">Nearby Parking Spaces</h2>
       
       {!userLocation ? (
         <div className="text-center py-8">
           <div className="animate-pulse mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -88,7 +101,7 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
         </div>
       ) : (
         <div className="space-y-4">
-          {sortedParkingData.map((parking) => {
+          {sortedParkingData.map((parking, index) => {
             const distance = calculateDistance(
               userLocation.lat,
               userLocation.lng,
@@ -99,12 +112,14 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
             const availableSpaces = parking.total_spaces - parking.cars_parked;
             const statusColorClass = getStatusColorClass(parking.cars_parked, parking.total_spaces);
             const statusText = getStatusText(parking.cars_parked, parking.total_spaces);
+            const rateClassInfo = getRateClassInfo(parking.street);
             
             return (
               <div 
                 key={parking.street}
-                className={`border-l-4 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md ${statusColorClass}`}
+                className={`border-l-4 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md hover:scale-102 ${statusColorClass}`}
                 onClick={() => onStreetSelect(parking.street)}
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex justify-between items-start">
                   <div>
@@ -112,7 +127,14 @@ const NearbyParkingList = ({ userLocation, onStreetSelect }: NearbyParkingListPr
                     <p className="text-sm mt-1">
                       {availableSpaces} spaces available ({Math.round((availableSpaces / parking.total_spaces) * 100)}% free)
                     </p>
-                    <p className="text-xs mt-2 font-medium">{statusText}</p>
+                    <div className="flex items-center mt-2">
+                      <span className={`inline-block w-2 h-2 rounded-full mr-2 ${
+                        statusText.includes('High') ? 'bg-green-500' : 
+                        statusText.includes('Limited') ? 'bg-amber-500' : 'bg-red-500'
+                      }`}></span>
+                      <p className="text-xs font-medium">{statusText}</p>
+                    </div>
+                    <p className="text-xs mt-2 font-medium text-gray-700">{rateClassInfo}</p>
                   </div>
                   <div className="text-right">
                     <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
