@@ -160,7 +160,9 @@ const ParkingStatistics = () => {
       isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
     }`}>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4 md:mb-0">Parking Statistics</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4 md:mb-0">
+          Parking Statistics for the last {timeRange === '24h' ? '24 hours' : timeRange === '7d' ? '7 days' : '30 days'}
+        </h2>
         
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Street Selection */}
@@ -228,7 +230,7 @@ const ParkingStatistics = () => {
           <p className="text-sm text-amber-700 mt-2">highest occupancy time</p>
         </div>
         <div className="bg-red-100 p-6 rounded-lg shadow-inner border border-red-200 transform transition-all duration-300 hover:scale-105">
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Est. Revenue Loss</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">Est. Revenue Loss (last {timeRange === '24h' ? '24h' : timeRange === '7d' ? '7d' : '30d'})</h3>
           <p className="text-3xl font-bold text-red-700">{statistics.revenueLoss} SEK</p>
           <p className="text-sm text-red-700 mt-2">from unpaid parking</p>
         </div>

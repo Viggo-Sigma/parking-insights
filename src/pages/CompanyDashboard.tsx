@@ -22,7 +22,7 @@ const CompanyDashboard = () => {
               Company Dashboard
             </h1>
             <p className="text-gray-700 text-lg">
-              Monitor parking activity, analyze statistics, and optimize revenue for parking spaces in Malmö.
+              Monitor parking activity, analyze statistics, and optimize revenue for parking spaces in your city.
             </p>
           </div>
           <div className="hidden md:block">
@@ -50,7 +50,7 @@ const CompanyDashboard = () => {
           About This Dashboard
         </h2>
         <p className="text-gray-700 mb-6 text-lg">
-          This dashboard provides parking companies with insights into parking activity across different streets in Malmö.
+          This dashboard provides parking companies with insights into parking activity across different cities and streets.
           The data shown is simulated for demonstration purposes.
         </p>
         <div className="bg-blue-100 border-l-4 border-blue-700 p-6 rounded-lg shadow-inner">

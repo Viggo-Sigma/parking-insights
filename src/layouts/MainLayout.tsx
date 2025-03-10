@@ -114,7 +114,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 </div>
                 <h2 className="text-2xl font-bold">Parking<span className="font-light">Insights</span></h2>
               </div>
-              <p className="text-gray-300 text-lg">Smart Parking Monitoring for Malmö</p>
+              <p className="text-gray-300 text-lg">Smart Parking Monitoring for your city</p>
             </div>
             <div className="text-gray-300 text-sm text-center md:text-right">
               <p>© {new Date().getFullYear()} Parking Insights. All rights reserved.</p>

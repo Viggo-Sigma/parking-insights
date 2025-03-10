@@ -87,7 +87,7 @@ const PublicInterface = () => {
         <div className="flex items-start">
           <div className="flex-1">
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
-              Find Parking in Malmö
+              Find Parking
             </h1>
             <p className="text-gray-700 text-lg">
               Locate available parking spaces near you and get real-time availability information.
