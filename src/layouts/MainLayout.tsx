@@ -5,7 +5,6 @@ interface MainLayoutProps {
 }
 
 const MainLayout = ({ children }: MainLayoutProps) => {
-  const [activeTab, setActiveTab] = useState<'company' | 'public'>('company');
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
 
