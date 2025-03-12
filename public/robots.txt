@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://polite-sky-0e3d9a40f.6.azurestaticapps.net/sitemap.xml 
