@@ -32,7 +32,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           ? 'bg-white shadow-lg py-3' 
           : 'bg-blue-800 py-4'
       }`}>
-        <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className="container mx-auto px-4">
           <div className="flex items-center space-x-3">
             <div className="relative w-10 h-10 flex items-center justify-center group">
               <div className={`absolute inset-0 rounded-full ${scrolled ? 'bg-blue-700' : 'bg-white/20'} transition-all duration-300 group-hover:scale-110`}></div>
@@ -51,44 +51,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             <h1 className={`text-2xl font-bold transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
               Parking<span className="font-light">Insights</span>
             </h1>
-          </div>
-          
-          {/* Navigation Tabs */}
-          <div className="flex space-x-2">
-            <button
-              onClick={() => setActiveTab('company')}
-              className={`relative px-4 py-2 rounded-lg transition-all duration-300 overflow-hidden ${
-                activeTab === 'company'
-                  ? scrolled 
-                    ? 'bg-blue-700 text-white shadow-md' 
-                    : 'bg-white text-blue-900 shadow-md'
-                  : scrolled 
-                    ? 'bg-gray-200 text-gray-800 hover:bg-gray-300' 
-                    : 'bg-blue-700/70 text-white hover:bg-blue-700/90'
-              }`}
-            >
-              <span className="relative z-10">Company Dashboard</span>
-              {activeTab === 'company' && (
-                <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              )}
-            </button>
-            <button
-              onClick={() => setActiveTab('public')}
-              className={`relative px-4 py-2 rounded-lg transition-all duration-300 overflow-hidden ${
-                activeTab === 'public'
-                  ? scrolled 
-                    ? 'bg-blue-700 text-white shadow-md' 
-                    : 'bg-white text-blue-900 shadow-md'
-                  : scrolled 
-                    ? 'bg-gray-200 text-gray-800 hover:bg-gray-300' 
-                    : 'bg-blue-700/70 text-white hover:bg-blue-700/90'
-              }`}
-            >
-              <span className="relative z-10">Find Parking</span>
-              {activeTab === 'public' && (
-                <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              )}
-            </button>
           </div>
         </div>
       </header>
